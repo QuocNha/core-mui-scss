@@ -1,10 +1,10 @@
-import { Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import CardListComponent from './components/CardList';
 import { ICardItem } from './components/Card';
 
 const HomeWrapper = styled('div')(({ theme }) => ({
   padding: theme.spacing(5),
+  paddingTop: theme.spacing(18),
 }));
 
 const HomeComponent = () => {
