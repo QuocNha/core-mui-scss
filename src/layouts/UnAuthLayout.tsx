@@ -2,20 +2,20 @@
 import { ReactNode } from 'react';
 
 // ** MUI Imports
-import { Theme } from '@mui/material/styles';
+import { Theme, useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 // ** Layout Imports
 // !Do not remove this Layout import
 import VerticalLayout from 'src/layouts/VerticalLayout';
 
-// ** Navigation Imports
-import navigation from 'src/navigation/vertical';
-
 // ** Component Import
 
 import { useSettings } from 'src/hooks/useSettings';
-import VerticalAppBarContent from './components/vertical/AppBarContent';
+import { Box } from '@mui/material';
+import MenuAppBarComponent from 'src/components/shared-components/menu-app-bar';
+import navigation from 'src/navigation/vertical';
+import { NavLink } from './types';
 
 // ** Hook Import
 
@@ -24,36 +24,27 @@ interface Props {
 }
 
 const UserLayout = ({ children }: Props) => {
-  // ** Hooks
-  const { settings, saveSettings } = useSettings();
+  const hidden = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
 
-  /**
-   *  The below variable will hide the current layout menu at given screen size.
-   *  The menu will be accessible from the Hamburger icon only (Vertical Overlay Menu).
-   *  You can change the screen size from which you want to hide the current layout menu.
-   *  Please refer useMediaQuery() hook: https://mui.com/components/use-media-query/,
-   *  to know more about what values can be passed to this hook.
-   *  ! Do not change this value unless you know what you are doing. It can break the template.
-   */
-  const hidden = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'));
-
-  const verticalAppBarContent = (props: any) => (
-    <VerticalAppBarContent
-      hidden={hidden}
-      toggleNavVisibility={props.toggleNavVisibility}
-    />
-  );
-
+  const theme = useTheme();
   return (
-    <VerticalLayout
-      hidden={hidden}
-      settings={settings}
-      saveSettings={saveSettings}
-      verticalNavItems={undefined} // Navigation Items
-      verticalAppBarContent={verticalAppBarContent}
+    <Box
+      sx={{
+        '*': {
+          padding: theme.spacing(0),
+          margin: theme.spacing(0),
+          textDecoration: 'none',
+          listStyle: 'none',
+          boxSizing: 'border-box',
+        },
+      }}
     >
-      {children}
-    </VerticalLayout>
+      <MenuAppBarComponent
+        navigation={navigation() as NavLink[]}
+        hidden={hidden}
+      />
+      <Box>{children}</Box>
+    </Box>
   );
 };
 
