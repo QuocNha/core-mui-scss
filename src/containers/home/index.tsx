@@ -1,4 +1,6 @@
+import { ReactNode } from 'react';
 import { styled } from '@mui/material/styles';
+import UnAuthLayout from 'src/layouts/UnAuthLayout';
 import CardListComponent from './components/CardList';
 import { ICardItem } from './components/Card';
 
@@ -7,7 +9,7 @@ const HomeWrapper = styled('div')(({ theme }) => ({
   paddingTop: theme.spacing(18),
 }));
 
-const HomeComponent = () => {
+const HomePage = () => {
   const listProduct: ICardItem[] = [
     {
       name: 'Image 1',
@@ -128,4 +130,6 @@ const HomeComponent = () => {
   );
 };
 
-export default HomeComponent;
+HomePage.getLayout = (page: ReactNode) => <UnAuthLayout>{page}</UnAuthLayout>;
+
+export default HomePage;
