@@ -1,8 +1,12 @@
-import { ReactNode } from 'react';
+import { ReactNode, useMemo } from 'react';
 import { styled } from '@mui/material/styles';
+import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
 import UnAuthLayout from 'src/layouts/UnAuthLayout';
 import CardListComponent from './components/CardList';
 import { ICardItem } from './components/Card';
+import FilterCategoryComponent, {
+  ICategory,
+} from './components/filter-category';
 
 const HomeWrapper = styled('div')(({ theme }) => ({
   padding: theme.spacing(5),
@@ -123,8 +127,43 @@ const HomePage = () => {
       },
     },
   ];
+
+  const categoriesFilter: ICategory[] = useMemo(() => {
+    return [
+      {
+        title: 'All',
+        icon: <ProductionQuantityLimitsIcon />,
+      },
+      {
+        title: 'Products',
+        icon: <ProductionQuantityLimitsIcon />,
+      },
+      {
+        title: 'Fruits',
+        icon: <ProductionQuantityLimitsIcon />,
+      },
+      {
+        title: 'Vegetable',
+        icon: <ProductionQuantityLimitsIcon />,
+      },
+      {
+        title: 'Jean',
+        icon: <ProductionQuantityLimitsIcon />,
+      },
+      {
+        title: 'Drink',
+        icon: <ProductionQuantityLimitsIcon />,
+      },
+      {
+        title: 'Favorite',
+        icon: <ProductionQuantityLimitsIcon />,
+      },
+    ];
+  }, []);
+
   return (
     <HomeWrapper>
+      <FilterCategoryComponent categories={categoriesFilter} />
       <CardListComponent list={listProduct ?? []} />
     </HomeWrapper>
   );
