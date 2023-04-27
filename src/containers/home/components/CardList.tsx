@@ -9,7 +9,7 @@ const CardListStyled = styled('div')(({ theme }) => ({
   display: 'flex',
   flexWrap: 'wrap',
   flexDirection: 'row',
-  marginLeft: `calc(-${theme.spacing(7.5)}))`,
+  marginLeft: -theme.spacing(7.5),
   '@media (max-width:767px)': {
     flexDirection: 'column',
     marginLeft: `-${theme.spacing(4.25)}`,

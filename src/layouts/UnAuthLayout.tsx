@@ -4,15 +4,14 @@ import { ReactNode } from 'react';
 // ** MUI Imports
 import { Theme, useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import ArrowUp from 'mdi-material-ui/ArrowUp';
+import { Box, Fab } from '@mui/material';
 
 // ** Layout Imports
-// !Do not remove this Layout import
-import VerticalLayout from 'src/layouts/VerticalLayout';
-
 // ** Component Import
 
-import { useSettings } from 'src/hooks/useSettings';
-import { Box } from '@mui/material';
+import ScrollToTop from 'src/components/shared-components/scroll-to-top';
+
 import MenuAppBarComponent from 'src/components/shared-components/menu-app-bar';
 import navigation from 'src/navigation/vertical';
 import { NavLink } from './types';
@@ -44,6 +43,11 @@ const UserLayout = ({ children }: Props) => {
         hidden={hidden}
       />
       <Box>{children}</Box>
+      <ScrollToTop className="mui-fixed">
+        <Fab color="primary" size="small" aria-label="scroll back to top">
+          <ArrowUp />
+        </Fab>
+      </ScrollToTop>
     </Box>
   );
 };
