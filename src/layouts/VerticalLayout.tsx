@@ -4,6 +4,7 @@ import { useState } from 'react';
 // ** MUI Imports
 import Box, { BoxProps } from '@mui/material/Box';
 import { styled } from '@mui/material/styles';
+import ArrowUp from 'mdi-material-ui/ArrowUp';
 
 // ** Icons Imports
 
@@ -17,6 +18,8 @@ import { LayoutProps } from 'src/layouts/types';
 import DatePickerWrapper from 'src/styles/libs/react-datepicker';
 import AppBar from './components/vertical/appBar';
 import Navigation from './components/vertical/navigation';
+import ScrollToTop from 'src/components/shared-components/scroll-to-top';
+import { Fab } from '@mui/material';
 
 // ** Styled Component
 
@@ -95,6 +98,12 @@ const VerticalLayout = (props: LayoutProps) => {
         <DatePickerWrapper sx={{ zIndex: 11 }}>
           <Box id="react-datepicker-portal" />
         </DatePickerWrapper>
+
+        <ScrollToTop className="mui-fixed">
+          <Fab color="primary" size="small" aria-label="scroll back to top">
+            <ArrowUp />
+          </Fab>
+        </ScrollToTop>
       </MainContentWrapper>
     </VerticalLayoutWrapper>
   );
