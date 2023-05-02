@@ -1,13 +1,19 @@
+import { ReactNode, useMemo } from 'react';
 import { styled } from '@mui/material/styles';
+import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
+import UnAuthLayout from 'src/layouts/UnAuthLayout';
 import CategoryList from './components/CategoryList';
 import { ICardItem } from './components/Category';
+import FilterCategoryComponent, {
+  ICategory,
+} from './components/filter-category';
 
 const HomeWrapper = styled('div')(({ theme }) => ({
   padding: theme.spacing(5),
   paddingTop: theme.spacing(18),
 }));
 
-const HomeComponent = () => {
+const HomePage = () => {
   const listProduct: ICardItem[] = [
     {
       name: 'Image 11',
@@ -121,11 +127,48 @@ const HomeComponent = () => {
       },
     },
   ];
+
+  const categoriesFilter: ICategory[] = useMemo(() => {
+    return [
+      {
+        title: 'All',
+        icon: <ProductionQuantityLimitsIcon />,
+      },
+      {
+        title: 'Products',
+        icon: <ProductionQuantityLimitsIcon />,
+      },
+      {
+        title: 'Fruits',
+        icon: <ProductionQuantityLimitsIcon />,
+      },
+      {
+        title: 'Vegetable',
+        icon: <ProductionQuantityLimitsIcon />,
+      },
+      {
+        title: 'Jean',
+        icon: <ProductionQuantityLimitsIcon />,
+      },
+      {
+        title: 'Drink',
+        icon: <ProductionQuantityLimitsIcon />,
+      },
+      {
+        title: 'Favorite',
+        icon: <ProductionQuantityLimitsIcon />,
+      },
+    ];
+  }, []);
+
   return (
     <HomeWrapper>
+      <FilterCategoryComponent categories={categoriesFilter} />
       <CategoryList list={listProduct ?? []} />
     </HomeWrapper>
   );
 };
 
-export default HomeComponent;
+HomePage.getLayout = (page: ReactNode) => <UnAuthLayout>{page}</UnAuthLayout>;
+
+export default HomePage;

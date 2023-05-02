@@ -4,6 +4,8 @@ import CheckCircleSharpIcon from '@mui/icons-material/CheckCircleSharp';
 import WifiSharpIcon from '@mui/icons-material/WifiSharp';
 
 const CartStyled = styled('div')(({ theme }) => ({
+  position: 'relative',
+  zIndex: '-10',
   borderRadius: theme.spacing(5),
   overflow: 'hidden',
   backgroundColor: theme.palette.background.paper,
@@ -36,6 +38,17 @@ const CartImageStyled = styled(Image)(({ theme }) => ({
   height: theme.spacing(50),
   objectFit: 'cover',
   flexShrink: 0,
+}));
+
+const CartTileStyled = styled('span')(({ theme }) => ({
+  position: 'absolute',
+  top: '20px',
+  left: '20px',
+  textTransform: 'uppercase',
+  fontSize: '13px',
+  backgroundColor: theme.palette.primary.main,
+  color: theme.palette.background.paper,
+  padding: theme.spacing(1.25),
 }));
 
 const CartTitleStyled = styled(Typography)(({ theme }) => ({
@@ -143,6 +156,7 @@ const Category = ({ item }: ICardComponentProps) => {
         height={40}
         width={40}
       />
+      <CartTileStyled>Business</CartTileStyled>
       <CartContentStyled>
         <CartContentTopStyled>
           <CartTitleStyled>{item?.title}</CartTitleStyled>
