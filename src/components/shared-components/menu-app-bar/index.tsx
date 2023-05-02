@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { IconButton, styled } from '@mui/material';
 import Menu from 'mdi-material-ui/Menu';
+import { PATH } from 'src/constants';
 import { NavLink } from 'src/layouts/types';
 import NextLink from '../NextLink';
 
@@ -72,7 +73,9 @@ const NextLinkStyled = styled(NextLink)(({ theme }) => ({
     backgroundColor: theme.palette.info.light,
     transition: '.5s',
   },
+
   '@media (max-width: 858px)': {
+    padding: `${theme.spacing(1.75)} ${theme.spacing(30)}`,
     ':hover': {
       backgroundColor: 'none',
       color: '#2c3e50',
@@ -84,6 +87,11 @@ const NextLinkStyled = styled(NextLink)(({ theme }) => ({
   },
 }));
 
+const ACTIVE_LINK = 'active';
+const FLOAT_LEFT_ZERO = '0';
+const FLOAT_LEFT_100 = '100%';
+const LOGO_TEXT = 'Design X';
+const DEFAULT_ACTIVE = 0;
 const MenuAppBarComponent = ({
   navigation,
   hidden,
@@ -93,9 +101,14 @@ const MenuAppBarComponent = ({
 }) => {
   // ** Hook
   const [openMenu, setOpenMenu] = useState(false);
+  const [activeMenu, setActiveMenu] = useState(DEFAULT_ACTIVE);
 
   const handleOpenMenu = () => {
     setOpenMenu(!openMenu);
+  };
+
+  const handleChangePage = (index?: number) => {
+    setActiveMenu(index ?? DEFAULT_ACTIVE);
   };
 
   return (
@@ -107,20 +120,23 @@ const MenuAppBarComponent = ({
           </IconButton>
         </ButtonStyled>
       )}
-      <LogoStyled>Design X</LogoStyled>
+      <LogoStyled>{LOGO_TEXT}</LogoStyled>
       <MenuStyled
         sx={{
           '@media (max-width: 858px)': {
-            left: openMenu ? '0' : '-100%',
+            left: openMenu ? FLOAT_LEFT_ZERO : `-${FLOAT_LEFT_100}`,
           },
         }}
       >
         {navigation?.map((item: NavLink, index) => {
           return (
-            <MenuItemStyled key={item?.title}>
+            <MenuItemStyled
+              key={item?.title}
+              onClick={() => handleChangePage(index)}
+            >
               <NextLinkStyled
-                className={index === 0 ? 'active' : ''}
-                href={item?.path ?? '/'}
+                className={index === activeMenu ? ACTIVE_LINK : ''}
+                href={item?.path ?? PATH.HOME}
               >
                 {item?.title}
               </NextLinkStyled>
