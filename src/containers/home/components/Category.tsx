@@ -133,7 +133,7 @@ interface ICardComponentProps {
   item: ICardItem;
 }
 
-const CardComponent = ({ item }: ICardComponentProps) => {
+const Category = ({ item }: ICardComponentProps) => {
   return (
     <CartStyled key={item?.name}>
       <CartImageStyled
@@ -176,4 +176,4 @@ const CardComponent = ({ item }: ICardComponentProps) => {
     </CartStyled>
   );
 };
-export default CardComponent;
+export default Category;
