@@ -1,5 +1,5 @@
 import { Box, styled } from '@mui/material';
-import CardComponent, { ICardItem } from './Card';
+import Category, { ICardItem } from './Category';
 
 interface ICardListProps {
   list: ICardItem[];
@@ -16,14 +16,14 @@ const CardListStyled = styled('div')(({ theme }) => ({
   },
 }));
 
-const CardListComponent = ({ list }: ICardListProps) => {
+const CategoryList = ({ list }: ICardListProps) => {
   return (
     <CardListStyled>
       {list?.map((item) => {
-        return <CardComponent key={item?.name} item={item} />;
+        return <Category key={item?.name} item={item} />;
       })}
     </CardListStyled>
   );
 };
 
-export default CardListComponent;
+export default CategoryList;
