@@ -13,6 +13,9 @@ import { Box, Fab } from '@mui/material';
 import ScrollToTop from 'src/components/shared-components/scroll-to-top';
 
 import MenuAppBarComponent from 'src/components/shared-components/menu-app-bar';
+import HeaderAppBarComponent from 'src/components/shared-components/header-app-bar';
+import InfoAppBarComponent from 'src/components/shared-components/info-app-bar';
+
 import navigation from 'src/navigation/vertical';
 import { NavLink } from './types';
 
@@ -38,10 +41,16 @@ const UserLayout = ({ children }: Props) => {
         },
       }}
     >
-      <MenuAppBarComponent
-        navigation={navigation() as NavLink[]}
-        hidden={hidden}
-      />
+      <Box sx={{ position: 'relative' }}>
+        <MenuAppBarComponent
+          navigation={navigation() as NavLink[]}
+          hidden={hidden}
+        />
+
+        <HeaderAppBarComponent />
+        <InfoAppBarComponent />
+      </Box>
+
       <Box>{children}</Box>
       <ScrollToTop className="mui-fixed">
         <Fab color="primary" size="small" aria-label="scroll back to top">

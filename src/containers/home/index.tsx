@@ -10,7 +10,6 @@ import FilterCategoryComponent, {
 
 const HomeWrapper = styled('div')(({ theme }) => ({
   padding: theme.spacing(5),
-  paddingTop: theme.spacing(18),
 }));
 
 const HomePage = () => {
