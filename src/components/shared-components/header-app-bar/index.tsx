@@ -8,6 +8,8 @@ const HeaderImageStyled = styled(Box)(({ theme }) => ({
   },
   '@media (max-width: 576px)': {
     height: '180px',
+    position: 'relative',
+    zIndex: '-9',
   },
 }));
 
