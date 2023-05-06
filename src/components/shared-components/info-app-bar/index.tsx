@@ -16,9 +16,11 @@ const CardInfoStyled = styled(Box)(({ theme }) => ({
     background: '#fff',
     borderRadius: '6px',
     boxShadow: '0 4px 20px rgba(0,0,0,.08)',
+    zIndex: -9,
   },
   '@media (max-width: 576px)': {
     margin: '-100px 15px 1.25rem',
+    zIndex: -9,
   },
 }));
 
@@ -129,7 +131,7 @@ const TypographyAddressStyled = styled(Typography)(({ theme }) => ({
   maxWidth: theme.spacing(80),
   '@media (max-width: 1023.98px)': {
     color: '#5e5873',
-    maxWidth: theme.spacing(120),
+    maxWidth: '100%',
   },
   '@media (max-width: 576px)': {
     fontSize: theme.spacing(3),
