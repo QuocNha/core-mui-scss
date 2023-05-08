@@ -1,13 +1,10 @@
 import { Box, IconButton, styled } from '@mui/material';
 
 const FilterContainer = styled(Box)(({ theme }) => ({
-  position: 'sticky',
   top: theme.spacing(15.5),
   backgroundColor: theme.palette.background.paper,
 
-  '@media (max-width: 858px)': {
-    zIndex: -9,
-  },
+  '@media (max-width: 858px)': {},
 }));
 
 const CategoryHeadStyled = styled(Box)(({ theme }) => ({

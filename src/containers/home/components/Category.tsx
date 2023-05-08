@@ -5,7 +5,7 @@ import WifiSharpIcon from '@mui/icons-material/WifiSharp';
 
 const CartStyled = styled('div')(({ theme }) => ({
   position: 'relative',
-  zIndex: '-10',
+  cursor: 'pointer',
   borderRadius: theme.spacing(5),
   overflow: 'hidden',
   backgroundColor: theme.palette.background.paper,
@@ -13,6 +13,11 @@ const CartStyled = styled('div')(({ theme }) => ({
   width: `calc(25% - ${theme.spacing(7.5)})`,
   marginLeft: theme.spacing(7.5),
   marginBottom: theme.spacing(7.5),
+  '@media (max-width:1000px)': {
+    flexDirection: 'column',
+    width: `calc(50% - ${theme.spacing(4.25)})`,
+    marginLeft: theme.spacing(4.25),
+  },
   '@media (max-width:767px)': {
     flexDirection: 'column',
     width: `calc(100% - ${theme.spacing(4.25)})`,

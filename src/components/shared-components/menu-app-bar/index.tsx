@@ -10,6 +10,7 @@ const NavStyled = styled('nav')(({ theme }) => ({
   width: '100%',
   backgroundColor: theme.palette.primary.main,
   position: 'fixed',
+  zIndex: '10',
 }));
 
 const MenuStyled = styled('ul')(({ theme }) => ({

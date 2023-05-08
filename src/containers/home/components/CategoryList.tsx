@@ -9,10 +9,12 @@ const CardListStyled = styled('div')(({ theme }) => ({
   display: 'flex',
   flexWrap: 'wrap',
   flexDirection: 'row',
+  flex: '80%',
   marginLeft: -theme.spacing(7.5),
   '@media (max-width:767px)': {
     flexDirection: 'column',
     marginLeft: `-${theme.spacing(4.25)}`,
+    flex: '100%',
   },
 }));
 
