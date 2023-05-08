@@ -4,16 +4,16 @@ const nextConfig = {
   experimental: {
     outputStandalone: true,
   },
-  images: {
-    minimumCacheTTL: 60, // cache image 60 seconds
-    domains: [],
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: [],
-      },
-    ],
-  },
+  // images: {
+  //   minimumCacheTTL: 60, // cache image 60 seconds
+  //   domains: [],
+  //   remotePatterns: [
+  //     {
+  //       protocol: 'https',
+  //       hostname: [],
+  //     },
+  //   ],
+  // },
   i18n: {
     locales: ['en', 'vi', 'ko'],
     defaultLocale: 'en',
