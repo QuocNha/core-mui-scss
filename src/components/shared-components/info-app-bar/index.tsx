@@ -16,11 +16,9 @@ const CardInfoStyled = styled(Box)(({ theme }) => ({
     background: '#fff',
     borderRadius: '6px',
     boxShadow: '0 4px 20px rgba(0,0,0,.08)',
-    zIndex: -9,
   },
   '@media (max-width: 576px)': {
     margin: '-100px 15px 1.25rem',
-    zIndex: -9,
   },
 }));
 
