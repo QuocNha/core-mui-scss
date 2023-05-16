@@ -1,6 +1,5 @@
-import { ReactNode, useMemo } from 'react';
+import { useMemo } from 'react';
 import { styled } from '@mui/material/styles';
-import UnAuthLayout from 'src/layouts/UnAuthLayout';
 import CategoryList from './components/CategoryList';
 import FilterCategoryComponent from './components/filter-category';
 import FilterByType from './components/filter-by-type';
@@ -39,7 +38,5 @@ const HomePage = () => {
     </HomeWrapper>
   );
 };
-
-HomePage.getLayout = (page: ReactNode) => <UnAuthLayout>{page}</UnAuthLayout>;
 
 export default HomePage;

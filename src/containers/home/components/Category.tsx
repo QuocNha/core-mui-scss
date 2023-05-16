@@ -2,6 +2,8 @@ import { Box, Typography, styled } from '@mui/material';
 import { Image } from 'src/components/shared-components/Image';
 import CheckCircleSharpIcon from '@mui/icons-material/CheckCircleSharp';
 import WifiSharpIcon from '@mui/icons-material/WifiSharp';
+import { useRouter } from 'next/router';
+import { PATH } from 'src/constants';
 
 const CartStyled = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -152,8 +154,15 @@ interface ICardComponentProps {
 }
 
 const Category = ({ item }: ICardComponentProps) => {
+  const router = useRouter();
+  const id = '1';
+
+  const goToProductByIdPage = () => {
+    router.push(`${PATH.PRODUCT}/${id}`);
+  };
+
   return (
-    <CartStyled key={item?.name}>
+    <CartStyled key={item?.name} onClick={goToProductByIdPage}>
       <CartImageStyled
         src={item?.src}
         defaultSrc="/images/avatar_default.svg"
