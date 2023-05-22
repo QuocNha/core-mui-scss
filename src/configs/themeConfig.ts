@@ -17,7 +17,7 @@ type ThemeConfig = {
 
 const themeConfig: ThemeConfig = {
   // ** Layout Configs
-  templateName: 'ADMIN ODA.VN' /* App Name */,
+  templateName: 'ADMIN' /* App Name */,
   mode: 'light' /* light | dark */,
   contentWidth: 'full' /* full | boxed */,
 

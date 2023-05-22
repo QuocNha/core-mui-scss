@@ -8,17 +8,10 @@ import {
   REHYDRATE,
 } from 'redux-persist';
 import { api } from 'src/utils/api';
-// import storage from 'redux-persist/lib/storage'
+
 import rootReducer from 'src/store/root-reducers';
 import { createWrapper } from 'next-redux-wrapper';
 
-// const persistConfig = {
-//   key: 'root',
-//   storage: storage,
-//   whitelist: [''],
-// };
-
-// const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = () =>
   configureStore({

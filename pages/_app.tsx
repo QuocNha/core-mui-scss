@@ -2,7 +2,7 @@
 // ** Next Imports
 import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
-import { Router } from 'next/router';
+import { Router, useRouter } from 'next/router';
 
 // ** Loader Import
 /* eslint-disable */
@@ -45,8 +45,11 @@ import { SnackbarProvider } from 'notistack';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import { AppDispatch } from 'src/store/app-dispatch';
-import UserLayout from 'src/layouts/UserLayout';
+import UnAuthLayout from 'src/layouts/UnAuthLayout';
 import { useEffect, useState } from 'react';
+import { AuthProvider, useAuth } from 'src/context/auth';
+import { PATH } from 'src/constants';
+import Loading from 'src/components/shared-components/Loading';
 
 // ** Extend App Props with Emotion
 type ExtendedAppProps = AppProps & {
@@ -69,11 +72,27 @@ if (themeConfig.routingLoader) {
   });
 }
 
+const unAuthRequired = ['login', 'register', 'forgot-password'];
+
 const AppLayout = ({ Component, Element }: any) => {
+  const authContext = useAuth();
+  const router = useRouter();
+  const isExits = unAuthRequired.find((x) => router.pathname.includes(x));
+
+  if (!authContext?.userInformation?.email) {
+    if (!isExits) {
+      router.push(PATH.LOGIN).then();
+    }
+  } else {
+    if (isExits) {
+      router.push(PATH.INDEX).then();
+    }
+  }
+
   const children = Component?.getLayout ? (
     Component?.getLayout(Element)
   ) : (
-    <UserLayout>{Element}</UserLayout>
+    <UnAuthLayout>{Element}</UnAuthLayout>
   );
   return <div>{children}</div>;
 };
@@ -109,10 +128,13 @@ const App = ({ Component, ...rest }: ExtendedAppProps) => {
                 <SettingsConsumer>
                   {({ settings }) => (
                     <ThemeComponent settings={settings}>
-                      <AppLayout
-                        Element={<Component {...pageProps} />}
-                        Component={Component}
-                      />
+                      <AuthProvider>
+                        <Loading />
+                        <AppLayout
+                          Element={<Component {...pageProps} />}
+                          Component={Component}
+                        />
+                      </AuthProvider>
                       <AppDispatch />
                     </ThemeComponent>
                   )}

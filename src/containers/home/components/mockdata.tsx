@@ -1,172 +1,88 @@
-import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
-import { ICardItem } from './Category';
-import { ICategory } from './filter-category';
-import { IFilterByType } from './filter-by-type';
+import { ICardItem } from './CategoryByGrid';
 
-export const listProduct: ICardItem[] = [
+export interface IProduct {
+  name?: string;
+  code?: string;
+  price?: string;
+  createAt?: string;
+  src?: string;
+  description?: string;
+  id?: string;
+  no?: any;
+}
+const iphoneSrc =
+  'https://chamsocdidong.com/uploads/2020/01/thay-kinh-lung-iphone-xr.png';
+export const listProduct: IProduct[] = [
   {
-    name: 'Image 11',
-    src: 'https://images.unsplash.com/photo-1679678691256-fa3ce50c2159?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1553&q=80',
-    title:
-      '2020 Word Champs Gaming Warzone  2020 Word Champs Gaming Warzone 2020 Word Champs Gaming Warzone 2020 Word Champs Gaming Warzone 2020 Word Champs Gaming Warzone 2020 Word Champs Gaming Warzone ',
-    user: {
-      avatar:
-        'https://tse3.mm.bing.net/th?id=OIP.p_1rXaDvAXo_6GXls_QXpgHaK9&pid=Api&P=0',
-      name: ' Dang Quoc Nha',
-    },
+    name: 'Product 1',
+    code: 'Pr1',
+    id: 'Pr1',
+    price: ' 6000',
+    createAt: '18-09-2023',
+    src: iphoneSrc,
+    description: `On September 14, Apple released the latest flagship iPhone Phones, the iPhone 13 series which consists of the iPhone 13 mini, the iPhone 13, iPhone 13 Pro, and iPhone 13 Pro Max, with new features which include a brighter display, longer battery life, more storage space, and an upgraded camera.If you just purchased one of these devices. Congratulations, operating an iPhone is easy and straightforward because you have to follow the directives on your screen. However, if you are completely new, you will not be able to understand everything. Dont be afraid Whether you re a new iPhone user or you have an old iPhone that you are replacing, this clear, easy, and practical guide has been created to aid you into the new and interesting world of the iPhone 13 series so that you can make the most out of this device`,
   },
   {
-    name: 'Image 10',
-    src: 'https://images.unsplash.com/photo-1679678691256-fa3ce50c2159?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1553&q=80',
-    title: '2020 Word Champs Gaming Warzone ',
-    user: {
-      avatar:
-        'https://tse3.mm.bing.net/th?id=OIP.p_1rXaDvAXo_6GXls_QXpgHaK9&pid=Api&P=0',
-      name: ' Dang Quoc Nha',
-    },
+    name: 'Product 2',
+    code: 'Pr2',
+    id: 'Pr2',
+    price: ' 6000',
+    createAt: '18-09-2023',
+    src: iphoneSrc,
+    description: `On September 14, Apple released the latest flagship iPhone Phones, the iPhone 13 series which consists of the iPhone 13 mini, the iPhone 13, iPhone 13 Pro, and iPhone 13 Pro Max, with new features which include a brighter display, longer battery life, more storage space, and an upgraded camera.If you just purchased one of these devices. Congratulations, operating an iPhone is easy and straightforward because you have to follow the directives on your screen. However, if you are completely new, you will not be able to understand everything. Don't be afraid! Whether you’re a new iPhone user or you have an old iPhone that you are replacing, this clear, easy, and practical guide has been created to aid you into the new and interesting world of the iPhone 13 series so that you can make the most out of this device`,
   },
   {
-    name: 'Image 9',
-    src: 'https://images.unsplash.com/photo-1679678691256-fa3ce50c2159?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1553&q=80',
-    title: '2020 Word Champs Gaming Warzone ',
-    user: {
-      avatar:
-        'https://tse3.mm.bing.net/th?id=OIP.p_1rXaDvAXo_6GXls_QXpgHaK9&pid=Api&P=0',
-      name: ' Dang Quoc Nha',
-    },
+    name: 'Product 3',
+    code: 'Pr3',
+    id: 'Pr3',
+    price: ' 6000',
+    createAt: '18-09-2023',
+    src: iphoneSrc,
+    description: 'Description Product',
   },
   {
-    name: 'Image 8',
-    src: 'https://images.unsplash.com/photo-1679678691256-fa3ce50c2159?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1553&q=80',
-    title: '2020 Word Champs Gaming Warzone ',
-    user: {
-      avatar:
-        'https://tse3.mm.bing.net/th?id=OIP.p_1rXaDvAXo_6GXls_QXpgHaK9&pid=Api&P=0',
-      name: ' Dang Quoc Nha',
-    },
+    name: 'Product 4',
+    code: 'Pr4',
+    id: 'Pr4',
+    price: ' 6000',
+    createAt: '18-09-2023',
+    src: iphoneSrc,
+    description: 'Description Product',
   },
   {
-    name: 'Image 7',
-    src: 'https://images.unsplash.com/photo-1679678691256-fa3ce50c2159?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1553&q=80',
-    title: '2020 Word Champs Gaming Warzone ',
-    user: {
-      avatar:
-        'https://tse3.mm.bing.net/th?id=OIP.p_1rXaDvAXo_6GXls_QXpgHaK9&pid=Api&P=0',
-      name: ' Dang Quoc Nha',
-    },
+    name: 'Product 5',
+    code: 'Pr5',
+    id: 'Pr5',
+    price: ' 6000',
+    createAt: '18-09-2023',
+    src: iphoneSrc,
+    description: 'Description Product',
   },
   {
-    name: 'Image 6',
-    src: 'https://images.unsplash.com/photo-1679678691256-fa3ce50c2159?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1553&q=80',
-    title: '2020 Word Champs Gaming Warzone ',
-    user: {
-      avatar:
-        'https://tse3.mm.bing.net/th?id=OIP.p_1rXaDvAXo_6GXls_QXpgHaK9&pid=Api&P=0',
-      name: ' Dang Quoc Nha',
-    },
+    name: 'Product 6',
+    code: 'Pr6',
+    id: 'Pr6',
+    price: ' 6000',
+    createAt: '18-09-2023',
+    src: iphoneSrc,
+    description: 'Description Product',
   },
   {
-    name: 'Image 5',
-    src: 'https://images.unsplash.com/photo-1679678691256-fa3ce50c2159?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1553&q=80',
-    title: '2020 Word Champs Gaming Warzone ',
-    user: {
-      avatar:
-        'https://tse3.mm.bing.net/th?id=OIP.p_1rXaDvAXo_6GXls_QXpgHaK9&pid=Api&P=0',
-      name: ' Dang Quoc Nha',
-    },
+    name: 'Product 7',
+    code: 'Pr7',
+    id: 'Pr7',
+    price: ' 6000',
+    createAt: '18-09-2023',
+    src: iphoneSrc,
+    description: 'Description Product',
   },
   {
-    name: 'Image 4',
-    src: 'https://images.unsplash.com/photo-1679678691256-fa3ce50c2159?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1553&q=80',
-    title: '2020 Word Champs Gaming Warzone ',
-    user: {
-      avatar:
-        'https://tse3.mm.bing.net/th?id=OIP.p_1rXaDvAXo_6GXls_QXpgHaK9&pid=Api&P=0',
-      name: ' Dang Quoc Nha',
-    },
-  },
-  {
-    name: 'Image 3',
-    src: 'https://images.unsplash.com/photo-1679678691256-fa3ce50c2159?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1553&q=80',
-    title: '2020 Word Champs Gaming Warzone ',
-    user: {
-      avatar:
-        'https://tse3.mm.bing.net/th?id=OIP.p_1rXaDvAXo_6GXls_QXpgHaK9&pid=Api&P=0',
-      name: ' Dang Quoc Nha',
-    },
-  },
-  {
-    name: 'Image 1',
-    src: 'https://images.unsplash.com/photo-1679678691256-fa3ce50c2159?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1553&q=80',
-    title: '2020 Word Champs Gaming Warzone ',
-    user: {
-      avatar:
-        'https://tse3.mm.bing.net/th?id=OIP.p_1rXaDvAXo_6GXls_QXpgHaK9&pid=Api&P=0',
-      name: ' Dang Quoc Nha',
-    },
-  },
-  {
-    name: 'Image 2',
-    src: 'https://images.unsplash.com/photo-1679678691256-fa3ce50c2159?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1553&q=80',
-    title: '2020 Word Champs Gaming Warzone ',
-    user: {
-      avatar:
-        'https://tse3.mm.bing.net/th?id=OIP.p_1rXaDvAXo_6GXls_QXpgHaK9&pid=Api&P=0',
-      name: ' Dang Quoc Nha',
-    },
-  },
-];
-
-export const listPrices: IFilterByType[] = [
-  {
-    id: '0',
-    name: 'All',
-  },
-  {
-    id: '1',
-    name: '$500 - $1000',
-  },
-  {
-    id: '2',
-    name: '$1000 - $1500',
-  },
-  {
-    id: '3',
-    name: '$1500 - $2000',
-  },
-  {
-    id: '4',
-    name: '$2000 - $2500',
-  },
-];
-
-export const listCategory: ICategory[] = [
-  {
-    title: 'All',
-    icon: <ProductionQuantityLimitsIcon />,
-  },
-  {
-    title: 'Products',
-    icon: <ProductionQuantityLimitsIcon />,
-  },
-  {
-    title: 'Fruits',
-    icon: <ProductionQuantityLimitsIcon />,
-  },
-  {
-    title: 'Vegetable',
-    icon: <ProductionQuantityLimitsIcon />,
-  },
-  {
-    title: 'Jean',
-    icon: <ProductionQuantityLimitsIcon />,
-  },
-  {
-    title: 'Drink',
-    icon: <ProductionQuantityLimitsIcon />,
-  },
-  {
-    title: 'Favorite',
-    icon: <ProductionQuantityLimitsIcon />,
+    name: 'Product 8',
+    code: 'Pr8',
+    id: 'Pr8',
+    price: ' 6000',
+    createAt: '18-09-2023',
+    src: iphoneSrc,
+    description: 'Description Product',
   },
 ];

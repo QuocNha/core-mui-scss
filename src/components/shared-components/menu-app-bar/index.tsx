@@ -91,7 +91,7 @@ const NextLinkStyled = styled(NextLink)(({ theme }) => ({
 const ACTIVE_LINK = 'active';
 const FLOAT_LEFT_ZERO = '0';
 const FLOAT_LEFT_100 = '100%';
-const LOGO_TEXT = 'Design X';
+const LOGO_TEXT = 'IPhone X';
 const DEFAULT_ACTIVE = 0;
 const MenuAppBarComponent = ({
   navigation,

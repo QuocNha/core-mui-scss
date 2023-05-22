@@ -1,7 +1,9 @@
 import { Box, Typography, styled } from '@mui/material';
 import { Image } from 'src/components/shared-components/Image';
-import CheckCircleSharpIcon from '@mui/icons-material/CheckCircleSharp';
 import WifiSharpIcon from '@mui/icons-material/WifiSharp';
+import { useTranslation } from 'react-i18next';
+import { IProduct } from './mockData';
+import ActionsCell from './table/ActionsCell';
 
 const CartStyled = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -41,7 +43,7 @@ const CartContentTopStyled = styled(Box)(({ theme }) => ({
 const CartImageStyled = styled(Image)(({ theme }) => ({
   width: '100%',
   height: theme.spacing(50),
-  objectFit: 'cover',
+  objectFit: 'contain',
   flexShrink: 0,
 }));
 
@@ -52,6 +54,16 @@ const CartTileStyled = styled('span')(({ theme }) => ({
   textTransform: 'uppercase',
   fontSize: '13px',
   backgroundColor: theme.palette.primary.main,
+  color: theme.palette.background.paper,
+  padding: theme.spacing(1.25),
+}));
+
+const CartActionStyled = styled('span')(({ theme }) => ({
+  position: 'absolute',
+  top: '5px',
+  right: '20px',
+  textTransform: 'uppercase',
+  fontSize: '13px',
   color: theme.palette.background.paper,
   padding: theme.spacing(1.25),
 }));
@@ -82,25 +94,21 @@ const CartAvatarStyled = styled(Image)(({ theme }) => ({
 const CartInfoStyled = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
-  paddingLeft: theme.spacing(6.25),
   flex: 1,
 }));
 
 const CartUserTopStyled = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
+  flexDirection: 'row',
   marginBottom: theme.spacing(0.25),
+  gap: theme.spacing(4),
 }));
 
 const CartUserNameStyled = styled(Typography)(({ theme }) => ({
   fontWeight: 500,
   fontSize: '14px',
   lineHeight: 1,
-}));
-
-const CartUserIconStyled = styled(CheckCircleSharpIcon)(({ theme }) => ({
-  color: '#20e3b2',
-  marginLeft: theme.spacing(1.25),
 }));
 
 const CartUserGameStyled = styled(Box)(({ theme }) => ({
@@ -121,21 +129,6 @@ const CartBottomStyled = styled(Box)(({ theme }) => ({
   flexShrink: 0,
 }));
 
-const CartLiveStyled = styled(Box)(({ theme }) => ({
-  color: 'white',
-  display: 'flex',
-  alignItems: 'center',
-  borderRadius: theme.spacing(2),
-  backgroundColor: '#ff6651',
-  padding: '5px 15px',
-}));
-
-const CartWatchingStyled = styled(Box)(({ theme }) => ({
-  fontSize: '13px',
-  fontWeight: 300,
-  color: '#999',
-}));
-
 export interface IUser {
   avatar?: string;
   name?: string;
@@ -148,10 +141,12 @@ export interface ICardItem {
 }
 
 interface ICardComponentProps {
-  item: ICardItem;
+  item: IProduct;
 }
 
 const Category = ({ item }: ICardComponentProps) => {
+  const { t } = useTranslation();
+
   return (
     <CartStyled key={item?.name}>
       <CartImageStyled
@@ -161,36 +156,29 @@ const Category = ({ item }: ICardComponentProps) => {
         height={40}
         width={40}
       />
-      <CartTileStyled>Business</CartTileStyled>
+      <CartTileStyled>{item?.name ?? ''}</CartTileStyled>
+      <CartActionStyled>
+        <ActionsCell params={item} />
+      </CartActionStyled>
+
       <CartContentStyled>
         <CartContentTopStyled>
-          <CartTitleStyled>{item?.title}</CartTitleStyled>
+          <CartTitleStyled>{item?.description}</CartTitleStyled>
           <CartUserStyled>
-            <CartAvatarStyled
-              src={item?.user?.avatar ?? ''}
-              defaultSrc="/images/avatar_default.svg"
-              alt={item?.user?.name ?? ''}
-              height={10}
-              width={10}
-            />
             <CartInfoStyled>
               <CartUserTopStyled>
-                <CartUserNameStyled>
-                  {item?.user?.name ?? ''}
-                </CartUserNameStyled>
-                <CartUserIconStyled />
+                <Typography>{t('create_at')}:</Typography>
+                <CartUserNameStyled>{item?.createAt ?? ''}</CartUserNameStyled>
               </CartUserTopStyled>
-              <CartUserGameStyled> Call of duty</CartUserGameStyled>
+              <CartUserTopStyled>
+                <Typography>{t('price')}:</Typography>
+                <CartUserNameStyled>
+                  {item?.price} {t('type_price')}
+                </CartUserNameStyled>
+              </CartUserTopStyled>
             </CartInfoStyled>
           </CartUserStyled>
         </CartContentTopStyled>
-        <CartBottomStyled>
-          <CartLiveStyled>
-            <WifiSharpIcon />
-            <span>Live</span>
-          </CartLiveStyled>
-          <CartWatchingStyled>4.2k watching</CartWatchingStyled>
-        </CartBottomStyled>
       </CartContentStyled>
     </CartStyled>
   );
