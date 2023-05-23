@@ -7,7 +7,6 @@ import {
   REGISTER,
   REHYDRATE,
 } from 'redux-persist';
-import { api } from 'src/utils/api';
 
 import rootReducer from 'src/store/root-reducers';
 import { createWrapper } from 'next-redux-wrapper';
@@ -21,7 +20,7 @@ const store = () =>
         serializableCheck: {
           ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
         },
-      }).concat(api.middleware);
+      });
     },
   });
 
