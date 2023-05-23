@@ -1,5 +1,3 @@
-import { ICardItem } from './CategoryByGrid';
-
 export interface IProduct {
   name?: string;
   code?: string;

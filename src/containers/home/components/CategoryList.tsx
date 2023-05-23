@@ -1,8 +1,8 @@
+import { useCallback } from 'react';
 import { Box, styled } from '@mui/material';
 import Category, { ICardItem } from './Category';
 import { IProduct } from './mockData';
 import CategoryByList from './CategoryByList';
-import { useCallback } from 'react';
 import { TypeProductListEnum, useCustomerListContext } from '..';
 
 interface ICardListProps {
