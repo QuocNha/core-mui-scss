@@ -75,7 +75,7 @@ export const productListColumn: (Omit<GridColDef, 'sortComparator'> & {
     headerAlign: 'center',
     minWidth: 70,
     width: 70,
-    renderCell: (params) => <ActionsCell params={params} />,
+    renderCell: (params) => <ActionsCell params={params.row as IProduct} />,
     editable: false,
   },
 ];
