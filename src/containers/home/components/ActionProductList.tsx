@@ -1,7 +1,9 @@
+import { useRouter } from 'next/router';
+import { PATH } from 'src/constants';
 import { SelectChangeEvent, styled } from '@mui/material';
 import ChangeTypeListProductSelect from './selects/ChangeTypeListProduct';
 import AddProduct from './button/AddProduct';
-import { TypeProductListEnum, useProductListContext } from '..';
+import { TypeProductListEnum } from '..';
 
 const ActionWrapper = styled('div')(({ theme }) => ({
   padding: theme.spacing(5),
@@ -19,12 +21,15 @@ const ActionProductList = ({
   setTypeProductList,
   typeProductList,
 }: IActionProductList) => {
+  const router = useRouter();
   const listChangeType = [
     { id: 1, label: TypeProductListEnum.grid },
     { id: 2, label: TypeProductListEnum.list },
   ];
 
-  const { onOpenModalUpdateProduct } = useProductListContext();
+  const gotoProductAdd = () => {
+    router.push(PATH.ProductAdd);
+  };
 
   const handleChangeTypeProductList = (event: SelectChangeEvent) => {
     if (event?.target?.value) {
@@ -50,7 +55,7 @@ const ActionProductList = ({
         }
         handleChange={handleChangeTypeProductList}
       />
-      <AddProduct title="Add Product" handleClick={onOpenModalUpdateProduct} />
+      <AddProduct title="Add Product" handleClick={gotoProductAdd} />
     </ActionWrapper>
   );
 };

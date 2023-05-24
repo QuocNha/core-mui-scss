@@ -81,11 +81,11 @@ const AppLayout = ({ Component, Element }: any) => {
 
   if (!authContext?.userInformation?.email) {
     if (!isExits) {
-      router.push(PATH.LOGIN).then();
+      router.push(PATH.LOGIN);
     }
   } else {
     if (isExits) {
-      router.push(PATH.INDEX).then();
+      router.push(PATH.INDEX);
     }
   }
 

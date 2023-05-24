@@ -26,6 +26,8 @@ export default {
       upload_product:'Upload product',
       add_product:'Add Product',
       update_product:'Edit Product',
-      'youre_delete_product_$field':'You are delete  {{field}}'
+      youre_delete_product_$field:'You are delete  {{field}}',
+      back:'back',
+      product_code_is_exit:'Product code is exit'
     }
 };

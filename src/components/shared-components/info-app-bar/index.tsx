@@ -3,6 +3,7 @@ import Phone from 'mdi-material-ui/Phone';
 import MapMarker from 'mdi-material-ui/MapMarker';
 import { useAuth } from 'src/context/auth';
 import { useTranslation } from 'react-i18next';
+import { useRouter } from 'next/router';
 
 const CardInfoStyled = styled(Box)(({ theme }) => ({
   position: 'absolute',
@@ -141,7 +142,10 @@ const TypographyAddressStyled = styled(Typography)(({ theme }) => ({
 const InfoAppBarComponent = () => {
   const { userInformation, logout } = useAuth();
   const { t } = useTranslation();
-
+  const router = useRouter();
+  const backToPage = () => {
+    router.back();
+  };
   return (
     <>
       <CardInfoStyled>
@@ -204,6 +208,17 @@ const InfoAppBarComponent = () => {
           gap: (theme) => theme.spacing(2),
         }}
       >
+        <Button
+          sx={{
+            ':hover': {
+              backgroundColor: (theme) => theme.palette.background.paper,
+            },
+          }}
+          onClick={backToPage}
+        >
+          {t('back')}
+        </Button>
+
         <Typography>{userInformation?.email}</Typography>
         <Button
           sx={{

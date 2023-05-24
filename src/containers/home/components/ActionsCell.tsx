@@ -1,18 +1,23 @@
 import React, { useCallback } from 'react';
+import { PATH } from 'src/constants';
 import { IconButton, Menu, MenuItem, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { equals } from 'rambda';
 import { useTranslation } from 'react-i18next';
 
+import { useRouter } from 'next/router';
 import { DeleteOutline, ModeEditOutlineOutlined } from '@mui/icons-material';
 import { IProduct } from 'src/types';
 import { useProductListContext } from '..';
+import { productSelect } from 'src/store/slices/app';
+import { dispatch } from 'src/store/app-dispatch';
 
 const CustomerListActionsCell = ({ params }: { params: IProduct }) => {
+  const router = useRouter();
   const {
     setProductBySelect,
-    onOpenModalUpdateProduct,
+    // onOpenModalUpdateProduct,
     onOpenModalConfirmDelete,
   } = useProductListContext();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -37,9 +42,10 @@ const CustomerListActionsCell = ({ params }: { params: IProduct }) => {
 
   const handleEdit = useCallback(async () => {
     if (params) {
-      setProductBySelect?.({ ...params });
+      dispatch(productSelect(params));
+      router.push(`${PATH.ProductEdit}/${params?.id}`);
     }
-    onOpenModalUpdateProduct?.();
+    // onOpenModalUpdateProduct?.();
     handleClose();
   }, []);
 
