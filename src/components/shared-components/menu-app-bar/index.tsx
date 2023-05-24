@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { IconButton, styled } from '@mui/material';
+import { Button, IconButton, styled } from '@mui/material';
 import Menu from 'mdi-material-ui/Menu';
 import { PATH } from 'src/constants';
 import { NavLink } from 'src/layouts/types';

@@ -4,7 +4,7 @@ import React from 'react';
 import { Box } from '@mui/material';
 import { IProduct } from '../mockData';
 import { ProductCell } from './ProductCell';
-import ActionsCell from './ActionsCell';
+import ActionsCell from '../ActionsCell';
 
 export const productListColumn: (Omit<GridColDef, 'sortComparator'> & {
   field: keyof IProduct | string;

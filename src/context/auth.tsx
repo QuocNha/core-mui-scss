@@ -20,12 +20,14 @@ export interface IAuthContext {
   userInformation?: IUserInformation | undefined;
   setUserInformation?: Dispatch<SetStateAction<IUserInformation | undefined>>;
   login: (body: LoginForm, onSuccess: () => void, onError: () => void) => void;
+  logout: () => void;
 }
 
 const defaultValue: IAuthContext = {
   userInformation: undefined,
   setUserInformation: undefined,
   login: () => undefined,
+  logout: () => undefined,
 };
 
 const AuthContext = createContext<IAuthContext>(defaultValue);
@@ -42,13 +44,18 @@ const AuthProvider: React.FC<IAuthProviderProps> = (props) => {
     });
   };
 
+  const logout = async () => {
+    setUserInformation(undefined);
+  };
+
   const authSetting = useMemo(
     () => ({
       userInformation,
       setUserInformation,
       login,
+      logout,
     }),
-    [userInformation, setUserInformation, login]
+    [userInformation, setUserInformation, login, logout]
   );
 
   return (

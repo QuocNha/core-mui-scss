@@ -1,6 +1,16 @@
 export default {
     common: {
       login:'Login',
+      sign_in:'Sign in',
+      logout:'Logout',
+      product_code:'Product code',
+      enter_your_product_code:'Enter your product code',
+      product_name:'Product name',
+      enter_your_product_name:'Enter your product name',
+      product_price:'Product price',
+      enter_your_product_price:'Enter your product price',
+      product_description:'Product description',
+      enter_your_product_description:'Enter your product description',
       email:'Email',
       password:'Password',
       enter_your_$field:'Enter your {{field}}',
@@ -12,6 +22,10 @@ export default {
       you_entered_invalid_field_format:'You entered invalid field format',
       create_at:"Create At",
       price:"Price",
-      type_price:"$"
+      type_price:"$",
+      upload_product:'Upload product',
+      add_product:'Add Product',
+      update_product:'Edit Product',
+      'youre_delete_product_$field':'You are delete  {{field}}'
     }
 };

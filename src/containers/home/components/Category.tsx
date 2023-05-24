@@ -3,7 +3,7 @@ import { Image } from 'src/components/shared-components/Image';
 import WifiSharpIcon from '@mui/icons-material/WifiSharp';
 import { useTranslation } from 'react-i18next';
 import { IProduct } from './mockData';
-import ActionsCell from './table/ActionsCell';
+import ActionsCell from './ActionsCell';
 
 const CartStyled = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -41,10 +41,11 @@ const CartContentTopStyled = styled(Box)(({ theme }) => ({
 }));
 
 const CartImageStyled = styled(Image)(({ theme }) => ({
-  width: '100%',
+  width: '80%',
   height: theme.spacing(50),
   objectFit: 'contain',
   flexShrink: 0,
+  alignItems: 'center',
 }));
 
 const CartTileStyled = styled('span')(({ theme }) => ({
@@ -115,16 +116,6 @@ const CartUserGameStyled = styled(Box)(({ theme }) => ({
   color: '#999',
   fontWeight: 300,
   fontSize: '13px',
-  marginTop: 'auto',
-  flexShrink: 0,
-}));
-
-const CartBottomStyled = styled(Box)(({ theme }) => ({
-  padding: theme.spacing(2.25),
-  borderTop: `1px solid #eee`,
-  display: ' flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
   marginTop: 'auto',
   flexShrink: 0,
 }));

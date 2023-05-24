@@ -2,7 +2,7 @@ import { Box, Stack, Typography, styled } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { IProduct } from './mockData';
 import { ProductCell } from './table/ProductCell';
-import ActionsCell from './table/ActionsCell';
+import ActionsCell from './ActionsCell';
 
 const CartStyled = styled('div')(({ theme }) => ({
   position: 'relative',

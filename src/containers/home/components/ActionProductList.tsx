@@ -1,12 +1,13 @@
 import { SelectChangeEvent, styled } from '@mui/material';
 import ChangeTypeListProductSelect from './selects/ChangeTypeListProduct';
 import AddProduct from './button/AddProduct';
-import { TypeProductListEnum } from '..';
+import { TypeProductListEnum, useProductListContext } from '..';
 
 const ActionWrapper = styled('div')(({ theme }) => ({
   padding: theme.spacing(5),
   display: 'flex',
   justifyContent: 'space-between',
+  width: '100%',
 }));
 
 export interface IActionProductList {
@@ -22,6 +23,8 @@ const ActionProductList = ({
     { id: 1, label: TypeProductListEnum.grid },
     { id: 2, label: TypeProductListEnum.list },
   ];
+
+  const { onOpenModalUpdateProduct } = useProductListContext();
 
   const handleChangeTypeProductList = (event: SelectChangeEvent) => {
     if (event?.target?.value) {
@@ -47,7 +50,7 @@ const ActionProductList = ({
         }
         handleChange={handleChangeTypeProductList}
       />
-      <AddProduct title="Add Product" />
+      <AddProduct title="Add Product" handleClick={onOpenModalUpdateProduct} />
     </ActionWrapper>
   );
 };

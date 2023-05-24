@@ -3,15 +3,18 @@ import { IconButton, Menu, MenuItem, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { equals } from 'rambda';
-import { GridRenderCellParams } from '@mui/x-data-grid/models/params/gridCellParams';
 import { useTranslation } from 'react-i18next';
 
 import { DeleteOutline, ModeEditOutlineOutlined } from '@mui/icons-material';
-import { IProduct } from '../mockData';
-import { useCustomerListContext } from '../..';
+import { IProduct } from './mockData';
+import { useProductListContext } from '..';
 
 const CustomerListActionsCell = ({ params }: { params: IProduct }) => {
-  const { removeProduct } = useCustomerListContext();
+  const {
+    setProductBySelect,
+    onOpenModalUpdateProduct,
+    onOpenModalConfirmDelete,
+  } = useProductListContext();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const open = Boolean(anchorEl);
@@ -33,11 +36,16 @@ const CustomerListActionsCell = ({ params }: { params: IProduct }) => {
   }, []);
 
   const handleEdit = useCallback(async () => {
+    if (params) {
+      setProductBySelect?.({ ...params });
+    }
+    onOpenModalUpdateProduct?.();
     handleClose();
   }, []);
 
   const handleDelete = useCallback(() => {
-    removeProduct?.(params.id as string);
+    setProductBySelect?.({ ...params });
+    onOpenModalConfirmDelete?.();
     handleClose();
   }, []);
 

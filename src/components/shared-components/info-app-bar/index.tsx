@@ -1,6 +1,8 @@
-import { Box, Stack, Typography, styled } from '@mui/material';
+import { Box, Button, Stack, Typography, styled } from '@mui/material';
 import Phone from 'mdi-material-ui/Phone';
 import MapMarker from 'mdi-material-ui/MapMarker';
+import { useAuth } from 'src/context/auth';
+import { useTranslation } from 'react-i18next';
 
 const CardInfoStyled = styled(Box)(({ theme }) => ({
   position: 'absolute',
@@ -137,57 +139,84 @@ const TypographyAddressStyled = styled(Typography)(({ theme }) => ({
 }));
 
 const InfoAppBarComponent = () => {
+  const { userInformation, logout } = useAuth();
+  const { t } = useTranslation();
+
   return (
-    <CardInfoStyled>
-      <CardHeaderStyled>
-        <CardHeaderWrapperStyled>
-          <CardHeaderTitleStyled>Đặng Quốc Nhã</CardHeaderTitleStyled>
-          <CardHeaderBodyStyled>
-            <TypographyJobStyled>ReactJS Developer</TypographyJobStyled>
-            <CardBodyInfoStyled>
-              <Stack flexDirection="row">
-                <Phone
-                  sx={{
-                    color: (theme) => theme.palette.background.paper,
-                    '@media (max-width: 1023.98px)': {
-                      color: '#5e5873',
-                    },
-                    '@media (max-width: 574px)': {
-                      fontSize: (theme) => theme.spacing(4),
-                    },
-                  }}
-                />
-                <TypographyPhoneStyled
-                  sx={{
-                    paddingLeft: (theme) => theme.spacing(4),
-                  }}
-                >
-                  0866085734
-                </TypographyPhoneStyled>
-              </Stack>
-              <Stack flexDirection="row">
-                <MapMarker
-                  sx={{
-                    color: (theme) => theme.palette.background.paper,
-                    '@media (max-width: 1023.98px)': {
-                      color: '#5e5873',
-                    },
-                    '@media (max-width: 574px)': {
-                      fontSize: (theme) => theme.spacing(4),
-                    },
-                  }}
-                />
-                <TypographyAddressStyled
-                  sx={{ paddingLeft: (theme) => theme.spacing(4) }}
-                >
-                  134A, Ly Phuc Man, District 7, HCM City 134A
-                </TypographyAddressStyled>
-              </Stack>
-            </CardBodyInfoStyled>
-          </CardHeaderBodyStyled>
-        </CardHeaderWrapperStyled>
-      </CardHeaderStyled>
-    </CardInfoStyled>
+    <>
+      <CardInfoStyled>
+        <CardHeaderStyled>
+          <CardHeaderWrapperStyled>
+            <CardHeaderTitleStyled>Đặng Quốc Nhã</CardHeaderTitleStyled>
+            <CardHeaderBodyStyled>
+              <TypographyJobStyled>ReactJS Developer</TypographyJobStyled>
+              <CardBodyInfoStyled>
+                <Stack flexDirection="row">
+                  <Phone
+                    sx={{
+                      color: (theme) => theme.palette.background.paper,
+                      '@media (max-width: 1023.98px)': {
+                        color: '#5e5873',
+                      },
+                      '@media (max-width: 574px)': {
+                        fontSize: (theme) => theme.spacing(4),
+                      },
+                    }}
+                  />
+                  <TypographyPhoneStyled
+                    sx={{
+                      paddingLeft: (theme) => theme.spacing(4),
+                    }}
+                  >
+                    0866085734
+                  </TypographyPhoneStyled>
+                </Stack>
+                <Stack flexDirection="row">
+                  <MapMarker
+                    sx={{
+                      color: (theme) => theme.palette.background.paper,
+                      '@media (max-width: 1023.98px)': {
+                        color: '#5e5873',
+                      },
+                      '@media (max-width: 574px)': {
+                        fontSize: (theme) => theme.spacing(4),
+                      },
+                    }}
+                  />
+                  <TypographyAddressStyled
+                    sx={{ paddingLeft: (theme) => theme.spacing(4) }}
+                  >
+                    134A, Ly Phuc Man, District 7, HCM City 134A
+                  </TypographyAddressStyled>
+                </Stack>
+              </CardBodyInfoStyled>
+            </CardHeaderBodyStyled>
+          </CardHeaderWrapperStyled>
+        </CardHeaderStyled>
+      </CardInfoStyled>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          float: 'right',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: (theme) => theme.spacing(2),
+        }}
+      >
+        <Typography>{userInformation?.email}</Typography>
+        <Button
+          sx={{
+            ':hover': {
+              backgroundColor: (theme) => theme.palette.background.paper,
+            },
+          }}
+          onClick={logout}
+        >
+          {t('logout')}
+        </Button>
+      </Box>
+    </>
   );
 };
 

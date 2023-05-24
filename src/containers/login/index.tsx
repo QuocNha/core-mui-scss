@@ -96,17 +96,7 @@ const LoginComponent = () => {
 
   const onSubmit = async (data: LoginForm) => {
     setIsLoading(!isLoading);
-    // await login(
-    //   {
-    //     ...data,
-    //   },
-    //   () => {
-    //     setIsLoading(false);
-    //   },
-    //   () => {
-    //     setIsLoading(false);
-    //   }
-    // );
+
     login(
       {
         ...data,
@@ -127,8 +117,6 @@ const LoginComponent = () => {
       </BackgroundRandomStyled>
       <Box className="content-center">
         <Card sx={{ zIndex: 1 }}>
-          {/* {isLoading && <Loading />} */}
-
           <CardContent
             sx={{
               padding: (themePadding) => `${themePadding.spacing(8)}`,
