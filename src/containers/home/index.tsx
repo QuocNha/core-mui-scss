@@ -61,7 +61,7 @@ export interface ProductListContext {
   productCodeIsExist?: (productCode: string) => boolean;
   onOpenModalConfirmDelete?: () => void;
 
-  updateProduct: (productItem: IProduct) => void;
+  updateProduct?: (productItem: IProduct) => void;
 }
 
 export const ProductListContext = React.createContext<ProductListContext>({});
