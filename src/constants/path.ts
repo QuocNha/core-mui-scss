@@ -1,5 +1,8 @@
 export const PATH = {
   INDEX: '/',
   HOME: '/home',
-  LOGIN:'login'
+  LOGIN:'/login',
+  ProductAdd:'/product/add',
+  ProductEdit:'/product/edit'
+
 };

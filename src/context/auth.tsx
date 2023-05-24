@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import {
   Dispatch,
   SetStateAction,
@@ -6,6 +7,7 @@ import {
   useMemo,
   useState,
 } from 'react';
+import { PATH } from 'src/constants';
 import { LoginForm } from 'src/containers/login';
 
 interface IAuthProviderProps {
@@ -34,6 +36,8 @@ const AuthContext = createContext<IAuthContext>(defaultValue);
 
 const AuthProvider: React.FC<IAuthProviderProps> = (props) => {
   const { children } = props;
+
+  const router = useRouter();
   const [userInformation, setUserInformation] = useState<IUserInformation>();
 
   const login = async (body: LoginForm, onSuccess?: () => void) => {
@@ -46,6 +50,7 @@ const AuthProvider: React.FC<IAuthProviderProps> = (props) => {
 
   const logout = async () => {
     setUserInformation(undefined);
+    router.push(PATH.LOGIN);
   };
 
   const authSetting = useMemo(
