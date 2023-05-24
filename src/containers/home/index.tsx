@@ -65,7 +65,7 @@ export interface ProductListContext {
   // onCloseModalUpdateProduct?: () => void;
   // addProduct?: (productItem: IProduct) => void;
 
-  // productCodeIsExist?: (productCode: string) => boolean;
+  productCodeIsExist?: (productCode: string) => boolean;
   onOpenModalConfirmDelete?: () => void;
 
   // updateProduct?: (productItem: IProduct) => void;
@@ -114,16 +114,16 @@ const HomePage = () => {
     }
   }, [productsSelector]);
 
-  // const productCodeIsExist = (productCode: string) => {
-  //   const productIndex = products?.findIndex((_item) => {
-  //     return _item?.code?.toUpperCase() === productCode?.toUpperCase();
-  //   });
+  const productCodeIsExist = (productCode: string) => {
+    const productIndex = products?.findIndex((_item) => {
+      return _item?.code?.toUpperCase() === productCode?.toUpperCase();
+    });
 
-  //   if (productIndex === -1) {
-  //     return false;
-  //   }
-  //   return true;
-  // };
+    if (productIndex === -1) {
+      return false;
+    }
+    return true;
+  };
 
   const removeProduct = (id: string) => {
     if (products?.length) {
@@ -243,7 +243,7 @@ const HomePage = () => {
 
       // addProduct,
 
-      // productCodeIsExist,
+      productCodeIsExist,
 
       onOpenModalConfirmDelete,
 
@@ -265,7 +265,7 @@ const HomePage = () => {
 
       // addProduct,
 
-      // productCodeIsExist,
+      productCodeIsExist,
 
       onOpenModalConfirmDelete,
       // updateProduct,
