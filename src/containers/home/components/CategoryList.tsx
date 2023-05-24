@@ -1,8 +1,13 @@
-import { Box, styled } from '@mui/material';
-import Category, { ICardItem } from './Category';
+import { useCallback } from 'react';
+import { styled } from '@mui/material';
+import { IProduct } from 'src/types';
+import Category from './Category';
+import CategoryByList from './CategoryByList';
+import { TypeProductListEnum } from '..';
 
 interface ICardListProps {
-  list: ICardItem[];
+  list: IProduct[];
+  typeProductList: TypeProductListEnum;
 }
 
 const CardListStyled = styled('div')(({ theme }) => ({
@@ -18,11 +23,21 @@ const CardListStyled = styled('div')(({ theme }) => ({
   },
 }));
 
-const CategoryList = ({ list }: ICardListProps) => {
+const CategoryList = ({ list, typeProductList }: ICardListProps) => {
+  const renderCategory = useCallback(
+    (item: IProduct) => {
+      if (typeProductList === TypeProductListEnum.list) {
+        return <CategoryByList key={item?.name} item={item} />;
+      }
+      return <Category key={item?.name} item={item} />;
+    },
+    [list, typeProductList]
+  );
+
   return (
     <CardListStyled>
       {list?.map((item) => {
-        return <Category key={item?.name} item={item} />;
+        return renderCategory(item);
       })}
     </CardListStyled>
   );

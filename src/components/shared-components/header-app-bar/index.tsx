@@ -17,7 +17,7 @@ const HeaderAppBarComponent = () => {
     <HeaderImageStyled
       style={{
         backgroundImage:
-          'url(https://oda-link-s3-production.s3.amazonaws.com/supplier_cover/6ce4625ba88ae81081202113e193817c)',
+          'url(https://imageio.forbes.com/blogs-images/davidphelan/files/2017/03/IMG_1566-1200x800.jpg?format=jpg&width=1200)',
 
         backgroundSize: 'cover',
       }}

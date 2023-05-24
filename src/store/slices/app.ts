@@ -1,37 +1,27 @@
 import { RootState } from 'src/store';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { IError } from 'src/utils';
 
 interface IAppState {
-  apiError: IError;
-  isExpiredToken: boolean;
-  currentAccountTab: 'account' | 'company';
+  loading: boolean;
 }
 
-const initialState: IAppState = { apiError: {}, isExpiredToken:false, currentAccountTab: 'account' };
+const initialState: IAppState = {  loading: false };
 
 export const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
-    setApiError: (state, { payload }: PayloadAction<IError>) => {
-      state.apiError = payload;
-    },
-    clearApiError: (state) => {
-      state.apiError = {};
-    },
-    setCurrentAccountTab: (state, { payload }: PayloadAction<IAppState>) => {
-      state.currentAccountTab = payload.currentAccountTab;
-    },
-    setExpiredToken: (state, { payload }: PayloadAction<boolean>) => {
-      state.isExpiredToken = payload;
+   
+    setLoading: (state, { payload }: PayloadAction<boolean>) => {
+      state.loading = payload;
     },
   },
 });
 
-export const { setApiError, clearApiError, setExpiredToken, setCurrentAccountTab } = appSlice.actions;
+export const { setLoading } = appSlice.actions;
 export const appActions = {
-  appSlice,
+  appSlice
 };
-export const currentAccountTab = (state: RootState) => state.app.currentAccountTab;
+
+export const loading = (state: RootState) => state.app.loading;

@@ -11,7 +11,6 @@ import themeConfig from 'src/configs/themeConfig';
 import { ContentWidth, ThemeColor } from 'src/layouts/types';
 import { useTranslation } from 'react-i18next';
 import { Cookies, CookiesKey, LanguageEnum } from 'src/utils';
-import { LAYOUT_DETAIL_WIDTH } from 'src/utils/constants';
 
 export type Settings = {
   mode: PaletteMode;
@@ -20,6 +19,8 @@ export type Settings = {
   language: LanguageEnum;
   layoutDetailWidth: number;
 };
+
+const LAYOUT_DETAIL_WIDTH = 1064;
 
 export type SettingsContextValue = {
   settings: Settings;

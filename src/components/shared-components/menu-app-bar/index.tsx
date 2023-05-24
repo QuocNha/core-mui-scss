@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { IconButton, styled } from '@mui/material';
+import { Button, IconButton, styled } from '@mui/material';
 import Menu from 'mdi-material-ui/Menu';
 import { PATH } from 'src/constants';
 import { NavLink } from 'src/layouts/types';
@@ -91,7 +91,7 @@ const NextLinkStyled = styled(NextLink)(({ theme }) => ({
 const ACTIVE_LINK = 'active';
 const FLOAT_LEFT_ZERO = '0';
 const FLOAT_LEFT_100 = '100%';
-const LOGO_TEXT = 'Design X';
+const LOGO_TEXT = 'IPhone X';
 const DEFAULT_ACTIVE = 0;
 const MenuAppBarComponent = ({
   navigation,
