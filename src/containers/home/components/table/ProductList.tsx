@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { Box, styled } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
-import { IProduct } from '../mockData';
+import { IProduct } from 'src/types';
 import { productListColumn } from './productListColumn.const';
 
 export interface IProductListTable {

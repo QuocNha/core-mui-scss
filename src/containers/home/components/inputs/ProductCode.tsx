@@ -9,11 +9,13 @@ interface IProductCodeInputProps {
   name?: string;
   onCheckExit?: (value: string) => boolean;
   codePre: string;
+  isDisable: boolean;
 }
 const ProductCodeInput = ({
   name = '',
   onCheckExit,
   codePre,
+  isDisable = false,
 }: IProductCodeInputProps) => {
   const { setError, clearErrors } = useFormContext();
   const [t] = useTranslation();
@@ -79,6 +81,7 @@ const ProductCodeInput = ({
       InputLabelProps={{
         shrink: true,
       }}
+      disabled={isDisable}
       InputProps={InputProps}
       required
     />

@@ -1,13 +1,5 @@
-export interface IProduct {
-  name?: string;
-  code?: string;
-  price?: string;
-  createAt?: string;
-  src?: string;
-  description?: string;
-  id?: string;
-  no?: any;
-}
+import { IProduct } from 'src/types';
+
 const iphoneSrc =
   'https://chamsocdidong.com/uploads/2020/01/thay-kinh-lung-iphone-xr.png';
 export const listProduct: IProduct[] = [

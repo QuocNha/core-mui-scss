@@ -18,13 +18,15 @@ import { useTranslation } from 'react-i18next';
 import { styled } from '@mui/material/styles';
 import { setLoading } from 'src/store/slices/app';
 import { dispatch } from 'src/store/app-dispatch';
+import { IProduct } from 'src/types';
 
 import UnAuthLayout from 'src/layouts/UnAuthLayout';
 import CategoryList from './components/CategoryList';
 
-import { IProduct, listProduct } from './components/mockData';
+import { listProduct } from './mockDataTest';
 import ActionProductList from './components/ActionProductList';
 import ProductModal from './components/modals/ProductModal';
+import { equals } from 'rambda';
 
 const HomeWrapper = styled('div')(({ theme }) => ({
   padding: theme.spacing(5),
@@ -58,6 +60,8 @@ export interface ProductListContext {
 
   productCodeIsExist?: (productCode: string) => boolean;
   onOpenModalConfirmDelete?: () => void;
+
+  updateProduct: (productItem: IProduct) => void;
 }
 
 export const ProductListContext = React.createContext<ProductListContext>({});
@@ -90,10 +94,8 @@ const HomePage = () => {
   const modalConfirmDelete = useRef<ModalConfirmChangeRef>(null);
 
   useEffect(() => {
-    if (typeProductList === TypeProductListEnum.grid) {
-      setProducts(listProduct ?? []);
-    }
-  }, [listProduct, typeProductList]);
+    setProducts(listProduct ?? []);
+  }, [listProduct]);
 
   const productCodeIsExist = (productCode: string) => {
     const productIndex = products?.findIndex((_item) => {
@@ -117,15 +119,42 @@ const HomePage = () => {
     }, 600);
   };
 
-  const addProduct = (productItem: IProduct) => {
+  const updateProduct = (productItem: IProduct) => {
+    const productIndex = products?.findIndex((_item) => {
+      return equals(_item?.id, productItem?.id);
+    });
+    const productProcess = [...products];
+    if (productProcess?.[productIndex]) {
+      productProcess[productIndex] = productItem;
+    }
+    if (productProcess) {
+      setProducts(productProcess);
+    }
     dispatch(setLoading(true));
+
+    setTimeout(() => {
+      dispatch(setLoading(false));
+    }, 600);
+  };
+
+  const addProduct = (productItem: IProduct) => {
     const productProcess = [...products, productItem];
     if (productProcess) {
       setProducts(productProcess);
     }
+    dispatch(setLoading(true));
+
     setTimeout(() => {
       dispatch(setLoading(false));
     }, 600);
+  };
+
+  const onSubmit = (productItem: IProduct) => {
+    if (productBySelect) {
+      updateProduct({ ...productItem, id: productBySelect?.id });
+    } else {
+      addProduct({ ...productItem });
+    }
   };
 
   const renderProductList = useCallback(() => {
@@ -165,7 +194,7 @@ const HomePage = () => {
         title={titleModal}
         modalRef={modalUpdateProductRef}
         onClose={onCloseModalUpdateProduct}
-        onSubmit={addProduct}
+        onSubmit={onSubmit}
         product={productBySelect}
       />
     );
@@ -193,6 +222,8 @@ const HomePage = () => {
       productCodeIsExist,
 
       onOpenModalConfirmDelete,
+
+      updateProduct,
     }),
     // eslint-disable-next-line no-restricted-globals
     [
@@ -213,6 +244,7 @@ const HomePage = () => {
       productCodeIsExist,
 
       onOpenModalConfirmDelete,
+      updateProduct,
     ]
   );
 

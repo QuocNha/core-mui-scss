@@ -6,7 +6,7 @@ import { equals } from 'rambda';
 import { useTranslation } from 'react-i18next';
 
 import { DeleteOutline, ModeEditOutlineOutlined } from '@mui/icons-material';
-import { IProduct } from './mockData';
+import { IProduct } from 'src/types';
 import { useProductListContext } from '..';
 
 const CustomerListActionsCell = ({ params }: { params: IProduct }) => {

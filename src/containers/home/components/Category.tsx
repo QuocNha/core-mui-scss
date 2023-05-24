@@ -2,7 +2,7 @@ import { Box, Typography, styled } from '@mui/material';
 import { Image } from 'src/components/shared-components/Image';
 import WifiSharpIcon from '@mui/icons-material/WifiSharp';
 import { useTranslation } from 'react-i18next';
-import { IProduct } from './mockData';
+import { IProduct } from 'src/types';
 import ActionsCell from './ActionsCell';
 
 const CartStyled = styled('div')(({ theme }) => ({
@@ -157,6 +157,10 @@ const Category = ({ item }: ICardComponentProps) => {
           <CartTitleStyled>{item?.description}</CartTitleStyled>
           <CartUserStyled>
             <CartInfoStyled>
+              <CartUserTopStyled>
+                <Typography>{t('product_code')}:</Typography>
+                <CartUserNameStyled>{item?.code ?? ''}</CartUserNameStyled>
+              </CartUserTopStyled>
               <CartUserTopStyled>
                 <Typography>{t('create_at')}:</Typography>
                 <CartUserNameStyled>{item?.createAt ?? ''}</CartUserNameStyled>

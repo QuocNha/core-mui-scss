@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { styled } from '@mui/material';
+import { IProduct } from 'src/types';
 import Category from './Category';
-import { IProduct } from './mockData';
 import CategoryByList from './CategoryByList';
 import { TypeProductListEnum } from '..';
 

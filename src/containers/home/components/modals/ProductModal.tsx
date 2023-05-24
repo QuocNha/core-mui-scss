@@ -13,13 +13,13 @@ import dayjs from 'dayjs';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useTranslation } from 'react-i18next';
+import { IProduct } from 'src/types';
 import FormDialog, {
   FormDialogRef,
 } from 'src/components/shared-components/modal/dialog';
 import { ChangeEvent, useEffect, useMemo, useState } from 'react';
 import CreateAtDatePicker from '../selects/CreateAt';
 import UploadImage from '../UploadImage';
-import { IProduct } from '../mockData';
 import ProductCodeInput from '../inputs/ProductCode';
 import { useProductListContext } from '../..';
 
@@ -61,6 +61,10 @@ const ProductModal = ({
   const { productCodeIsExist } = useProductListContext();
 
   const [selectedFile, setSelectedFile] = useState<string>('');
+
+  const isDisableProductCode = useMemo(() => {
+    return !!product;
+  }, [product]);
 
   // Validate
   const validate = useMemo<yup.SchemaOf<ProductForm>>(
@@ -186,6 +190,7 @@ const ProductModal = ({
               onCheckExit={productCodeIsExist}
               name={ProductFormEnum.productCode}
               codePre={formContext.getValues(ProductFormEnum.productCode)}
+              isDisable={isDisableProductCode}
             />
 
             <TextFieldElement

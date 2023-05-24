@@ -2,7 +2,7 @@ import { GridColDef } from '@mui/x-data-grid';
 import { translate } from 'src/i18n/translate';
 import React from 'react';
 import { Box } from '@mui/material';
-import { IProduct } from '../mockData';
+import { IProduct } from 'src/types';
 import { ProductCell } from './ProductCell';
 import ActionsCell from '../ActionsCell';
 

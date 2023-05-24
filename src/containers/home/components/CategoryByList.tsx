@@ -1,6 +1,6 @@
 import { Box, Stack, Typography, styled } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { IProduct } from './mockData';
+import { IProduct } from 'src/types';
 import { ProductCell } from './table/ProductCell';
 import ActionsCell from './ActionsCell';
 
@@ -84,9 +84,13 @@ const CategoryByList = ({ item }: ICardComponentProps) => {
       <ProductCell name={item?.name} picture={item?.src} />
       <CartContentStyled>
         <CartContentTopStyled>
-          <CartItemRowStyled alignItems={'center'}>
+          <CartItemRowStyled alignItems="center">
             <Typography sx={{ maxWidth: '100px' }}>{t('action')}:</Typography>
             <ActionsCell params={item} />
+          </CartItemRowStyled>
+          <CartItemRowStyled>
+            <Typography sx={{ maxWidth: '100px' }}>{t('Code')}:</Typography>
+            <CartTitleStyled>{item?.code}</CartTitleStyled>
           </CartItemRowStyled>
           <CartItemRowStyled>
             <Typography sx={{ maxWidth: '100px' }}>{t('price')}:</Typography>
