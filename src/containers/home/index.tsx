@@ -27,10 +27,11 @@ import {
 } from 'src/store/slices/app';
 import { dispatch } from 'src/store/app-dispatch';
 import { IProduct } from 'src/types';
+import { Box } from '@mui/material';
+import SliderAppComponent from 'src/components/shared-components/slider-app';
 
 import UnAuthLayout from 'src/layouts/UnAuthLayout';
 import CategoryList from './components/CategoryList';
-
 import { listProduct } from './mockDataTest';
 import ActionProductList from './components/ActionProductList';
 // import ProductModal from './components/modals/ProductModal';
@@ -274,11 +275,15 @@ const HomePage = () => {
 
   return (
     <ProductListContext.Provider value={values}>
+      <Box sx={{ width: '100%', marginTop: ' 40px', marginBottom: ' 80px' }}>
+        <SliderAppComponent />
+      </Box>
       <HomeWrapper>
         <ActionProductList
           setTypeProductList={setTypeProductList}
           typeProductList={typeProductList}
         />
+
         <BodyContainer>{renderProductList()}</BodyContainer>
       </HomeWrapper>
       {/* {renderProductModal()} */}
